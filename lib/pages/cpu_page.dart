@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'custom_bottom_nav_bar.dart'; // 하단바 위젯 import
+import '../Network.dart';
 
 class CpuPage extends StatelessWidget {
   const CpuPage({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class CpuPage extends StatelessWidget {
           },
         ),
         title: Text(
-          'CPU Products',
+          'CPU',
           style: TextStyle(
             color: Colors.black,
             fontSize: 24,

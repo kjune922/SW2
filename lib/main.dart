@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/',
       routes: {
-        '/': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
+        '/': (context) => HomePage(),
+        '/login': (context) => LoginPage(),
         '/signup': (context) => SignupPage(),
         '/reset_password': (context) => ResetPasswordPage(), // 비밀번호 재설정 경로 추가
         '/cpu': (context) => CpuPage(),
