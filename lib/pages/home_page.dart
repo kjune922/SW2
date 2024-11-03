@@ -124,7 +124,13 @@ class HomePage extends StatelessWidget {
         ],
       ),
 
-      
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          children: [
+
+          ],
+        ),
+      ),
     );
   }
 }
