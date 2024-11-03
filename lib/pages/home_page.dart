@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'shoppingcart_page.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -103,7 +105,7 @@ class HomePage extends StatelessWidget {
                         height: 120,
                         child: TextButton(
                             onPressed: () {
-                              Navigator.pushReplacementNamed(context, goWhere);
+                              Navigator.pushNamed(context, goWhere);
                             },
                             child: Text(
                               category,
@@ -123,11 +125,48 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-
+                            // 하단바
       bottomNavigationBar: BottomAppBar(
         child: Row(
           children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width/3.3,
+              child: IconButton(
+                  onPressed: () {//홈 누르면 뭐할건지
+                    Navigator.pushReplacementNamed(context, '/home');
+                  },
+                  icon: Icon(
+                      Icons.home,
+                    size: 50,
+                  ),
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width/3.3,
+              child: IconButton(
+                  onPressed: () {//쇼핑카트 누르면
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (_) => const Shoppingcart(),
+                    ));
+                  },
+                icon: Icon(
+                  Icons.shopping_cart,
+                  size: 50,
+                ),
+              ),
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width/3.3,
+              child: IconButton(
+                  onPressed: () {// 계정 누르면
 
+                  },
+                icon: Icon(
+                  Icons.person,
+                  size: 50,
+                ),
+              ),
+            ),
           ],
         ),
       ),
