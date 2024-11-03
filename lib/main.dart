@@ -27,10 +27,10 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignupPage(),
         '/reset_password': (context) => ResetPasswordPage(), // 비밀번호 재설정 경로 추가
         '/cpu': (context) => CpuPage(),
-        '/graphics': (context) =>GraphicsPage(),
-        '/mainboard': (context) =>MainboardPage(),
-        '/warning': (context) =>WarningPage(),
-        '/explanation': (context) =>ExplanationPage(),
+        '/graphics': (context) => GraphicsPage(),
+        '/mainboard': (context) => MainboardPage(),
+        '/warning': (context) => WarningPage(),
+        '/explanation': (context) => ExplanationPage(),
       },
     );
   }

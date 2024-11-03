@@ -1,48 +1,45 @@
 import 'package:flutter/material.dart';
-
-import 'shoppingcart_page.dart';
+import 'custom_bottom_nav_bar.dart'; // 하단바 위젯 import
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // 음식 사진 데이터
+    // 컴퓨터 부품 데이터 리스트
     List<Map<String, dynamic>> dataList = [
       {
-        "category": "cpu",
-        "imgUrl": "./assets/images/cpu.png",
+        "category": "CPU",
+        "imgUrl": "assets/images/cpu.png",
         "goWhere": "/cpu",
       },
       {
-        "category": "그래픽카드",
-        "imgUrl": "./assets/images/graphics.jpg",
+        "category": "그래픽 카드",
+        "imgUrl": "assets/images/graphics.jpg",
         "goWhere": "/graphics",
       },
       {
-        "category": "메인보드",
-        "imgUrl": "./assets/images/mainboard.jpg",
+        "category": "메인 보드",
+        "imgUrl": "assets/images/mainboard.jpg",
         "goWhere": "/mainboard",
       },
       {
-        "category": "조립시 주의사항",
-        "imgUrl": "./assets/images/warning.png",
+        "category": "사용시 주의사항",
+        "imgUrl": "assets/images/warning.png",
         "goWhere": "/warning",
       },
       {
-        "category": "부품 설명",
-        "imgUrl": "./assets/images/explanation.png",
+        "category": "부품 설명 도움",
+        "imgUrl": "assets/images/explanation.png",
         "goWhere": "/explanation",
       },
     ];
 
-    // 화면에 보이는 영역
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        elevation: 0, // 그림자 없애기
-        backgroundColor: Colors.white, // 배경 색상
-        centerTitle: false, // title 중앙 정렬
-        iconTheme: IconThemeData(color: Colors.black), // app bar icon color
+        elevation: 0,
+        backgroundColor: Colors.white,
         title: Text(
           "컴알못 도우미",
           style: TextStyle(
@@ -52,118 +49,91 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          // 검색
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: "상품을 검색해주세요.",
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-                // 돋보기 아이콘
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () {
-                    print("돋보기 아이콘 클릭");
-                  },
-                ),
-              ),
-            ),
-          ),
-          Divider(height: 1),
-          // 카테고리 목록
-          Expanded(
-            child: ListView.builder(
-              itemCount: dataList.length,
-              itemBuilder: (context, index) {
-                Map<String, dynamic> data = dataList[index];
-                String category = data["category"];
-                String imgUrl = data["imgUrl"];
-                String goWhere = data["goWhere"];
-
-                return Card(
-                  margin: const EdgeInsets.all(8),
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Image.asset(
-                        imgUrl,
-                        width: double.infinity,
-                        height: 120,
-                        fit: BoxFit.cover,
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 120,
-                        color: Colors.black.withOpacity(0.5),
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 120,
-                        child: TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, goWhere);
-                            },
-                            child: Text(
-                              category,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 36,
-                              ),
-                            ),
-                        ),
-                      ),
-
-                    ],
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-                            // 하단바
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              width: MediaQuery.of(context).size.width/3.3,
-              child: IconButton(
-                  onPressed: () {//홈 누르면 뭐할건지
-                    Navigator.pushReplacementNamed(context, '/home');
-                  },
-                  icon: Icon(
-                      Icons.home,
-                    size: 50,
+            // 검색 바
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 8,
+                    offset: Offset(0, 4),
                   ),
+                ],
               ),
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width/3.3,
-              child: IconButton(
-                  onPressed: () {//쇼핑카트 누르면
-                    Navigator.push(context, MaterialPageRoute(
-                      builder: (_) => const Shoppingcart(),
-                    ));
-                  },
-                icon: Icon(
-                  Icons.shopping_cart,
-                  size: 50,
+              child: TextField(
+                decoration: InputDecoration(
+                  icon: Icon(Icons.search, color: Colors.grey),
+                  hintText: 'Search products...',
+                  border: InputBorder.none,
                 ),
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width/3.3,
-              child: IconButton(
-                  onPressed: () {// 계정 누르면
+            SizedBox(height: 16),
+            // 부품 목록
+            Expanded(
+              child: ListView.builder(
+                itemCount: dataList.length,
+                itemBuilder: (context, index) {
+                  Map<String, dynamic> data = dataList[index];
+                  return _buildProductCard(context, data);
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+      // 고정된 하단바 추가
+      bottomNavigationBar: CustomBottomNavBar(
+        currentIndex: 0, // 홈 탭을 기본 선택 상태로 설정
+      ),
+    );
+  }
 
-                  },
-                icon: Icon(
-                  Icons.person,
-                  size: 50,
+  // 기존 카드 스타일을 유지하면서 UI 개선
+  Widget _buildProductCard(BuildContext context, Map<String, dynamic> data) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, data['goWhere']);
+      },
+      child: Card(
+        margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        clipBehavior: Clip.antiAlias,
+        elevation: 4,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            // 배경 이미지
+            Image.asset(
+              data['imgUrl'],
+              width: double.infinity,
+              height: 150,
+              fit: BoxFit.cover,
+            ),
+            // 반투명 오버레이
+            Container(
+              width: double.infinity,
+              height: 150,
+              color: Colors.black.withOpacity(0.4),
+            ),
+            // 카테고리 텍스트
+            Positioned(
+              child: Text(
+                data['category'],
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
