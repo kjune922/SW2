@@ -1,0 +1,15 @@
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/icudtl.dat
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/flutter_windows.dll
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.bin
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/AssetManifest.json
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/assets/images/cpu.png
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/assets/images/explanation.png
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/assets/images/graphics.jpg
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/assets/images/mainboard.jpg
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/assets/images/warning.png
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/FontManifest.json
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/kernel_blob.bin
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/NOTICES.Z
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+C:/Users/82107/Desktop/FLUTTER/SW5/sw5555/SW666/SW2/build/windows/x64/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag

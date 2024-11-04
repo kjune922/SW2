@@ -17,7 +17,8 @@ class LoginPage extends StatelessWidget {
           content: Text('아이디 또는 비밀번호가 틀렸습니다.'),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => Navigator.pop(
+                  context), // pop: 가장 상단에 있는 화면을 제거하여 이전 화면으로 돌아가는 방식
               child: Text('확인'),
             ),
           ],

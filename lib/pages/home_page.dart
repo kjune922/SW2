@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'custom_bottom_nav_bar.dart'; // 하단바 위젯 import
+import 'dart:io'; // 앱 종료를 위해 추가
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,64 +36,73 @@ class HomePage extends StatelessWidget {
       },
     ];
 
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: Text(
-          "컴알못 도우미",
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
+    return PopScope(
+      canPop: false, // 뒤로 가기(pop)를 방지
+      onPopInvokedWithResult: (didPop, result) {
+        // 뒤로 가기 버튼을 누르면 앱 종료
+        if (!didPop) exit(0); // 앱 종료
+      },
+
+      child: Scaffold(
+        backgroundColor: Colors.grey[100],
+        appBar: AppBar(
+          automaticallyImplyLeading: false, // 첫 애뮬켰을때 로그인안했는데도 뜨는 뒤로가기 화살표 제거
+          elevation: 0,
+          backgroundColor: Colors.white,
+          title: Text(
+            "컴알못 도우미",
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // 검색 바
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 8,
-                    offset: Offset(0, 4),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // 검색 바
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 8,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.search, color: Colors.grey),
+                    hintText: 'Search products...',
+                    border: InputBorder.none,
                   ),
-                ],
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  icon: Icon(Icons.search, color: Colors.grey),
-                  hintText: 'Search products...',
-                  border: InputBorder.none,
                 ),
               ),
-            ),
-            SizedBox(height: 16),
-            // 부품 목록
-            Expanded(
-              child: ListView.builder(
-                itemCount: dataList.length,
-                itemBuilder: (context, index) {
-                  Map<String, dynamic> data = dataList[index];
-                  return _buildProductCard(context, data);
-                },
+              SizedBox(height: 16),
+              // 부품 목록
+              Expanded(
+                child: ListView.builder(
+                  itemCount: dataList.length,
+                  itemBuilder: (context, index) {
+                    Map<String, dynamic> data = dataList[index];
+                    return _buildProductCard(context, data);
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-      // 고정된 하단바 추가
-      bottomNavigationBar: CustomBottomNavBar(
-        currentIndex: 0, // 홈 탭을 기본 선택 상태로 설정
+        // 고정된 하단바 추가
+        bottomNavigationBar: CustomBottomNavBar(
+          currentIndex: 0, // 홈 탭을 기본 선택 상태로 설정
+        ),
       ),
     );
   }

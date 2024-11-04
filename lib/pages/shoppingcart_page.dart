@@ -20,7 +20,6 @@ class Shoppingcart extends StatelessWidget {
           ),
         ),
       ),
-
     );
   }
 }

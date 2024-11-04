@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/home',
       routes: {
-        '/': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
+        '/login': (context) => LoginPage(),
+        '/': (context) => HomePage(),
         '/signup': (context) => SignupPage(),
         '/reset_password': (context) => ResetPasswordPage(), // 비밀번호 재설정 경로 추가
         '/cpu': (context) => CpuPage(),
